@@ -1,0 +1,1 @@
+# crud-asset-app
