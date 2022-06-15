@@ -38,11 +38,12 @@ const PORT=8000
                 // const cursor=db.collection('assets').find()
                 db.collection('assets').find().toArray()
                     .then(results =>{
-                        console.log(results)
+                        response.render('index.ejs',{assets: results})
+
+                        // console.log(results)
                         // .catch(error=>console.error(error))
                         // response.sendFile(__dirname+'/index.html')    
                     })
-                response.render('index.ejs',{})
 
                 .catch(error=>console.error(error))
              })

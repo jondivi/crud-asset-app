@@ -13,5 +13,22 @@
         <input type="text" placeholder="name" name="name">
         <input type="text" placeholder="model" name="model">
         <button type="submit">Submit</button>
+    </form>
+
+
+    <h2>Assets</h2>
+
+    <ul class="assets">
+        <!-- Loop through models -->
+        <% for(let i=0; i<assets.length; i++) {%>
+            <li class="model">
+                <!-- Output name from the iterated model object -->
+                <span><%= assets[i].name %></span>:::::
+                <!-- Output model from the iterated model object -->
+                <span><%= assets[i].model %></span>
+            </li>
+        <%} %>
+    </ul>
+
 </body>
 </html>
