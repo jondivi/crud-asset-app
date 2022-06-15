@@ -19,16 +19,21 @@ const PORT=8000
             const db=client.db('assets')
             const assetCollection=db.collection('assets')
 
-                     // Middlewares and other routes here:
+                    // Middlewares and other routes here:
+                    
+                    //This tells express that we are going to use EJS as the template engine
+                    app.set('view engine', 'ejs')
 
-                     //This tells express that we are going to use EJS as the template engine
-                     app.set('view engine', 'ejs')
+                    //This will tell express that we want to use cors
+                    app.use(cors())
 
-                      //This will tell express that we want to use cors
-                      app.use(cors())
+                    //This will tell express to make the 'public' folder accessible by using the built in middle-ware express.static
+                    app.use(express.static('public'))
+                    
+                    //This will tell the server that we are going to use body-parser. NEEDS TO BEFORE GETS AND POSTS!!!
+                    app.use(bodyParser.urlencoded({extended:true}))
 
-                      //This will tell the server that we are going to use body-parser. NEEDS TO BEFORE GETS AND POSTS!!!
-                      app.use(bodyParser.urlencoded({extended:true}))
+                      
 
 
              //CRUD BELOW:
