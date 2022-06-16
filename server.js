@@ -19,8 +19,8 @@ const PORT=8000
             const db=client.db('assets')
             const assetCollection=db.collection('assets')
 
-                    // Middlewares and other routes here:
-                    
+                    ////////// Middlewares and other routes here:
+
                     //This tells express that we are going to use EJS as the template engine
                     app.set('view engine', 'ejs')
 
@@ -29,14 +29,20 @@ const PORT=8000
 
                     //This will tell express to make the 'public' folder accessible by using the built in middle-ware express.static
                     app.use(express.static('public'))
+
+                    //This will teach the server to read JSON 
+                    app.use(bodyParser.json())
+
                     
                     //This will tell the server that we are going to use body-parser. NEEDS TO BEFORE GETS AND POSTS!!!
                     app.use(bodyParser.urlencoded({extended:true}))
 
+                    //////////
+
                       
 
 
-             //CRUD BELOW:
+             ///// CRUD BELOW:
 
              //sets where GET requests go to
              app.get('/',(request,response)=>{
@@ -44,20 +50,10 @@ const PORT=8000
                 db.collection('assets').find().toArray()
                     .then(results =>{
                         response.render('index.ejs',{assets: results})
-
-                        // console.log(results)
-                        // .catch(error=>console.error(error))
-                        // response.sendFile(__dirname+'/index.html')    
                     })
-
                 .catch(error=>console.error(error))
              })
-            
-          
-             //  .then(results=>{
-             //  const cursor=db.collection('assets').fin
-             //  console.log(cursor)
-           
+                      
  
              //sets where POST requests go to
              app.post('/items',(request,response)=>{
@@ -68,6 +64,17 @@ const PORT=8000
                      })
                      .catch(error=>console.error(error))
              })      
+
+            
+             //sets how PUT requests work
+             app.put('/assets',(request,response)=>{
+                 console.log(request,response)
+             })
+
+
+
+             ///// CRUD ABOVE ^
+
  
              
  
