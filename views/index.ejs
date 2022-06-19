@@ -17,11 +17,17 @@
 
     <article>
         <h2>Name invasion!</h2>
-        <p>
-            Replace the first "Hello" asset with another
-        </p>
-        <button id="update-button">Replace "Hello"</button>
+        <p>Replaces the first "Yoda" asset with something else</p>
+        <button id="update-button">Replace "Yoda"</button>
     </article>
+
+    <article>
+        <h2>Deeleetay</h2>
+        <p>This will delete one of the quotes listed. Will stop once there are none left.</p>
+        <button id="delete-button">Delete "something"</button>
+    </article>
+
+    <article id="message"></article>
 
 
     <h2>Assets</h2>
@@ -31,12 +37,12 @@
         <% for(let i=0; i<assets.length; i++) {%>
             <li class="model">
                 <!-- Output name from the iterated model object -->
-                <span><%= assets[i].name %></span>:::::
+                <span><%= assets[i].name %></span>:
                 <!-- Output model from the iterated model object -->
                 <span><%= assets[i].model %></span>
             </li>
-        <%} %>
+        <% } %>
     </ul>
-    <script src="/public/main.js"><script>
+    <script src="/main.js"></script>
 </body>
 </html>
