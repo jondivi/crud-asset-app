@@ -5,20 +5,21 @@ const app=express();
 const MongoClient=require('mongodb').MongoClient
 const cors=require('cors')
 const PORT=8000
+//This will allow us to mask our db information!!!
+require('dotenv').config()
+console.log(process.env)
 
-// const { response } = require('express');
-// const res = require('express/lib/response');
-// const req = require('express/lib/request');
+let db, 
+    dbConnectionString=process.env.DB_STRING,
+    dbName='assets'
+    
 
-
-// Replace process.env.DB_URL with your actual connection string
-// const connectionString = process.env.DB_URL
 
     //This will let us setup a connection to our MongoDB database
-    MongoClient.connect('mongodb+srv://jdivi:5utu1fa199ym@cluster0.syuqd.mongodb.net/?retryWrites=true&w=majority',{
+    MongoClient.connect(dbConnectionString,{
         useUnifiedTopology:true})
         .then(client=>{
-            console.log('Connected to Database')
+            console.log(`Connected to ${dbName} Database`)
             const db=client.db('assets')
             const assetCollection=db.collection('assets')
 
@@ -119,7 +120,8 @@ const PORT=8000
  
  
              //creates a server that browsers can listen to
-             app.listen(PORT,function(){
+             app.listen(process.env.PORT || PORT, ()=>{
+                //  (PORT,function()
                  console.log(`The server is running on port ${PORT}! Best ketchup.`)
              })
         })
