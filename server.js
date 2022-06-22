@@ -7,7 +7,7 @@ const cors=require('cors')
 const PORT=8000
 //This will allow us to mask our db information!!!
 require('dotenv').config()
-console.log(process.env)
+// console.log(process.env)
 
 let db, 
     dbConnectionString=process.env.DB_STRING,
